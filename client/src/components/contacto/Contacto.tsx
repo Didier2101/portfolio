@@ -64,7 +64,7 @@ export default function Contacto() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/send-email",
+        "https://portfolio2-5g8b.onrender.com/send-email",
         formData
       );
       console.log(response.data); // Mensaje de éxito
