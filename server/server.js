@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
-  origin: ["https://portafolio.com"], // Cambia esto por tu dominio
+  origin: ["https://portfolio-gnkh.onrender.com"], // Cambia esto por tu dominio
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
