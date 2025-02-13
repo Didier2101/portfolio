@@ -146,7 +146,7 @@ const Header = () => {
               letterSpacing: "-0.5px",
             }}
           >
-            {"<Dev />"}
+            {"<!BUG />"}
           </Typography>
 
           {!isMobile && (
