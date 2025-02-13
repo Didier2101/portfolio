@@ -73,6 +73,8 @@ export default function Contacto() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await api.post("/send-email", formData);
       if (response.status === 200) {
