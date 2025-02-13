@@ -26,7 +26,18 @@ import {
 import { motion } from "framer-motion";
 import axios from "axios";
 
+// Configuración de axios para la API
+// Configuración de axios para la API
+const api = axios.create({
+  baseURL:
+    import.meta.env.VITE_API_URL || "https://portfolio2-5g8b.onrender.com",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 export default function Contacto() {
+  const [loading, setLoading] = useState(false);
   const theme = useTheme();
   const [formData, setFormData] = useState({
     nombre: "",
@@ -63,35 +74,34 @@ export default function Contacto() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "https://portfolio2-5g8b.onrender.com/send-email",
-        formData
-      );
-      // Mostrar mensaje de éxito con SweetAlert2
-      Swal.fire({
-        title: "¡Mensaje enviado!",
-        text: "Tu mensaje ha sido enviado con éxito.",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: theme.palette.primary.main,
-      });
+      const response = await api.post("/send-email", formData);
+      if (response.status === 200) {
+        Swal.fire({
+          title: "¡Mensaje enviado!",
+          text: "Tu mensaje ha sido enviado con éxito.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          confirmButtonColor: theme.palette.primary.main,
+        });
 
-      // Limpiar el formulario después de enviar
-      setFormData({
-        nombre: "",
-        email: "",
-        asunto: "",
-        mensaje: "",
-      });
+        setFormData({
+          nombre: "",
+          email: "",
+          asunto: "",
+          mensaje: "",
+        });
+      }
     } catch {
       // Mostrar mensaje de error con SweetAlert2
       Swal.fire({
         title: "Error",
-        text: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+        text: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo o comunícate por WhatsApp.",
         icon: "error",
         confirmButtonText: "Aceptar",
         confirmButtonColor: theme.palette.error.main,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -327,13 +337,14 @@ export default function Contacto() {
                       variant="contained"
                       type="submit"
                       startIcon={<Send />}
+                      disabled={loading}
                       sx={{
                         mt: 3,
                         py: 1.5,
                         borderRadius: 2,
                       }}
                     >
-                      Enviar Mensaje
+                      {loading ? "Enviando..." : "Enviar Mensaje"}
                     </Button>
                   </motion.div>
                 </Box>
