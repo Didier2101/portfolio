@@ -193,7 +193,7 @@ const SobreMi = () => {
               item
               xs={12}
               md={6}
-              sx={{ display: "flex", justifyContent: "flex-end" }}
+              sx={{ display: "flex", justifyContent: "center" }}
             >
               <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}

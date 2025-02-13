@@ -64,6 +64,24 @@ export default function Footer() {
       }}
     >
       <Container maxWidth="lg">
+        <Box
+          component="div"
+          sx={{
+            marginBottom: "20px",
+            width: "60px",
+            display: "flex",
+            backgroundColor: "#ed3c37", // Rojo claro
+            padding: "2px 8px",
+            borderRadius: "4px",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white", // Texto blanco
+            fontWeight: "bold", // Texto en negrita
+            letterSpacing: "1.5px",
+          }}
+        >
+          <span style={{ color: "black" }}>!</span>BUG
+        </Box>
         <Grid container spacing={4}>
           {/* Logo y descripción */}
           <Grid item xs={12} md={4}>
@@ -143,7 +161,7 @@ export default function Footer() {
           </Grid>
         </Grid>
 
-        <Divider sx={{ my: 4 }} />
+        <Divider sx={{ my: 2 }} />
 
         {/* Social links y copyright */}
         <Box
@@ -160,24 +178,8 @@ export default function Footer() {
             color="text.secondary"
             sx={{ display: "flex", alignItems: "center", gap: 1 }}
           >
-            © {currentYear} Desarrollado por Didier Chavez -
-            <Box
-              component="span"
-              sx={{
-                backgroundColor: "#ed3c37", // Rojo claro
-                padding: "2px 8px",
-                borderRadius: "4px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 2,
-                color: "white", // Texto blanco
-                fontWeight: "bold", // Texto en negrita
-                letterSpacing: "1.5px",
-              }}
-            >
-              !BUG
-            </Box>
-            . Todos los derechos reservados.
+            © {currentYear} Desarrollado por Didier Chavez - Todos los derechos
+            reservados.
           </Typography>
 
           <Stack direction="row" spacing={1}>

@@ -63,12 +63,10 @@ export default function Contacto() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://portfolio2-5g8b.onrender.com/send-email",
         formData
       );
-      console.log(response.data); // Mensaje de éxito
-
       // Mostrar mensaje de éxito con SweetAlert2
       Swal.fire({
         title: "¡Mensaje enviado!",
@@ -85,9 +83,7 @@ export default function Contacto() {
         asunto: "",
         mensaje: "",
       });
-    } catch (error) {
-      console.error("Error al enviar el mensaje:", error);
-
+    } catch {
       // Mostrar mensaje de error con SweetAlert2
       Swal.fire({
         title: "Error",
