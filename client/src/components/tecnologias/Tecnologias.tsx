@@ -77,16 +77,13 @@ export default function Tecnologias() {
         minHeight: "100vh",
         pt: { xs: "58px", sm: "65px" },
         pb: 8,
-        bgcolor: "background.default",
+        bgcolor: theme.palette.background.default,
       }}
     >
       {/* Hero Section */}
       <Box
         sx={{
-          bgcolor:
-            theme.palette.mode === "dark"
-              ? "rgba(30, 30, 30, 0.8)"
-              : "rgba(245, 245, 245, 0.8)",
+          bgcolor: theme.palette.background.paper,
           py: 8,
         }}
       >
@@ -143,10 +140,7 @@ export default function Tecnologias() {
                   elevation={0}
                   sx={{
                     p: 3,
-                    bgcolor:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255, 255, 255, 0.05)"
-                        : "rgba(0, 0, 0, 0.02)",
+                    bgcolor: theme.palette.background.paper,
                     height: "100%",
                   }}
                 >
@@ -184,10 +178,7 @@ export default function Tecnologias() {
                             sx={{
                               height: 6,
                               borderRadius: 3,
-                              bgcolor:
-                                theme.palette.mode === "dark"
-                                  ? "rgba(255, 255, 255, 0.1)"
-                                  : "rgba(0, 0, 0, 0.1)",
+                              bgcolor: theme.palette.background.paper,
                               "& .MuiLinearProgress-bar": {
                                 borderRadius: 3,
                               },
@@ -214,10 +205,7 @@ export default function Tecnologias() {
             sx={{
               p: 4,
               mt: 4,
-              bgcolor:
-                theme.palette.mode === "dark"
-                  ? "rgba(255, 255, 255, 0.05)"
-                  : "rgba(0, 0, 0, 0.02)",
+              bgcolor: theme.palette.background.paper,
             }}
           >
             <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
@@ -236,10 +224,7 @@ export default function Tecnologias() {
                     icon={<DataIcon />}
                     label={tech}
                     sx={{
-                      bgcolor:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255, 255, 255, 0.05)"
-                          : "rgba(0, 0, 0, 0.05)",
+                      bgcolor: theme.palette.background.paper,
                       "&:hover": {
                         bgcolor: "primary.main",
                         color: "white",

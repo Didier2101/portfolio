@@ -108,10 +108,7 @@ const Header = () => {
       sx={{
         userSelect: "none",
         backdropFilter: "blur(8px)",
-        bgcolor: (theme) =>
-          theme.palette.mode === "dark"
-            ? "rgba(36, 36, 36, 0.8)"
-            : "rgba(255, 255, 255, 0.8)",
+        bgcolor: (theme) => theme.palette.background.default,
         boxShadow: "none",
         borderBottom: "1px solid",
         borderColor: "divider",
@@ -201,6 +198,9 @@ const Header = () => {
               onClick={toggleTheme}
               size="small"
               sx={{ color: "text.primary" }}
+              aria-label={
+                isDarkMode ? "Activar modo claro" : "Activar modo oscuro"
+              }
             >
               {isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
             </IconButton>

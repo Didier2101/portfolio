@@ -116,7 +116,7 @@ const SobreMi = () => {
         userSelect: "none",
         minHeight: "100vh",
         pt: { xs: "58px", sm: "65px" }, // Ajuste para el header fijo
-        bgcolor: "background.default",
+        bgcolor: theme.palette.background.default,
       }}
     >
       {/* Hero Section */}
@@ -126,10 +126,7 @@ const SobreMi = () => {
           overflow: "hidden",
           pt: 8,
           pb: 12,
-          bgcolor:
-            theme.palette.mode === "dark"
-              ? "rgba(30, 30, 30, 0.8)"
-              : "rgba(245, 245, 245, 0.8)",
+          bgcolor: theme.palette.background.paper,
         }}
       >
         <Container maxWidth="lg">
@@ -141,12 +138,13 @@ const SobreMi = () => {
                     variant="overline"
                     sx={{
                       letterSpacing: 4,
-                      color: "primary.main",
+                      color: "primary.dark", // Usa un tono más oscuro
                       fontWeight: 600,
                     }}
                   >
                     DESARROLLADOR FULL STACK
                   </Typography>
+
                   <Typography
                     variant="h2"
                     component="h1"
@@ -159,13 +157,14 @@ const SobreMi = () => {
                     </Box>
                   </Typography>
                   <Typography
-                    variant="h5"
+                    variant="h2"
                     color="text.secondary"
-                    sx={{ lineHeight: 1.8 }}
+                    sx={{ lineHeight: 1.8, fontSize: "1rem" }}
                   >
                     Transformo ideas en experiencias digitales excepcionales,
                     combinando diseño intuitivo con código limpio y eficiente.
                   </Typography>
+
                   <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
                     <Button
                       variant="contained"
@@ -180,7 +179,11 @@ const SobreMi = () => {
                       variant="outlined"
                       size="large"
                       startIcon={<Download />}
-                      sx={{ borderRadius: 2 }}
+                      sx={{
+                        borderRadius: 2,
+                        color: "primary.dark", // Usa un color más oscuro para mejorar el contraste
+                        borderColor: "primary.dark", // Asegura que el borde también sea visible
+                      }}
                       onClick={handleDownloadCV}
                     >
                       Descargar CV
@@ -304,7 +307,7 @@ const SobreMi = () => {
                           : ""}{" "}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Tiempo de Experiencia 🚀
+                        Tiempo de Experiencia
                       </Typography>
                     </Paper>
                   </Grid>
@@ -356,15 +359,25 @@ const SobreMi = () => {
                 </Typography>
                 <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
                   {[
-                    { icon: GitHub, url: "https://github.com/Didier2101" },
+                    {
+                      icon: GitHub,
+                      url: "https://github.com/Didier2101",
+                      label: "GitHub",
+                    },
                     {
                       icon: LinkedIn,
-                      url: "www.linkedin.com/in/dcg-didierchavez",
+                      url: "https://www.linkedin.com/in/dcg-didierchavez",
+                      label: "LinkedIn",
                     },
-                    { icon: Facebook, url: "https://www.facebook.com/" },
+                    {
+                      icon: Facebook,
+                      url: "https://www.facebook.com/",
+                      label: "Facebook",
+                    },
                     {
                       icon: Instagram,
                       url: "https://www.instagram.com/didier_dcg/",
+                      label: "Instagram",
                     },
                   ].map((social, index) => (
                     <motion.div
@@ -384,6 +397,7 @@ const SobreMi = () => {
                             bgcolor: "primary.dark",
                           },
                         }}
+                        aria-label={`Ir a ${social.label}`} // 🔹 Agregamos el label accesible
                       >
                         <social.icon />
                       </IconButton>

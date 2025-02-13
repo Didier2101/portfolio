@@ -55,10 +55,7 @@ export default function Footer() {
       component="footer"
       sx={{
         userSelect: "none",
-        bgcolor:
-          theme.palette.mode === "dark"
-            ? "rgba(30, 30, 30, 0.95)"
-            : "rgba(245, 245, 245, 0.95)",
+        bgcolor: theme.palette.background.default,
         py: 6,
         mt: "auto",
       }}
@@ -75,13 +72,14 @@ export default function Footer() {
             borderRadius: "4px",
             alignItems: "center",
             justifyContent: "center",
-            color: "white", // Texto blanco
-            fontWeight: "bold", // Texto en negrita
+            color: "#000", // Negro para mejorar contraste
+            fontWeight: "bold",
             letterSpacing: "1.5px",
           }}
         >
           <span style={{ color: "black" }}>!</span>BUG
         </Box>
+
         <Grid container spacing={4}>
           {/* Logo y descripción */}
           <Grid item xs={12} md={4}>

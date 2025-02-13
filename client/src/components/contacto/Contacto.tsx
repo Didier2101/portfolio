@@ -115,16 +115,13 @@ export default function Contacto() {
         minHeight: "100vh",
         pt: { xs: "58px", sm: "65px" },
         pb: 8,
-        bgcolor: "background.default",
+        bgcolor: theme.palette.background.default,
       }}
     >
       {/* Hero Section */}
       <Box
         sx={{
-          bgcolor:
-            theme.palette.mode === "dark"
-              ? "rgba(30, 30, 30, 0.8)"
-              : "rgba(245, 245, 245, 0.8)",
+          bgcolor: theme.palette.background.paper,
           py: 8,
         }}
       >
@@ -139,7 +136,7 @@ export default function Contacto() {
               display="block"
               textAlign="center"
               sx={{
-                color: "primary.main",
+                color: "primary.dark",
                 letterSpacing: 4,
                 mb: 2,
               }}
@@ -196,15 +193,9 @@ export default function Contacto() {
                     <Card
                       elevation={0}
                       sx={{
-                        bgcolor:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255, 255, 255, 0.05)"
-                            : "rgba(0, 0, 0, 0.02)",
+                        bgcolor: theme.palette.background.default,
                         "&:hover": {
-                          bgcolor:
-                            theme.palette.mode === "dark"
-                              ? "rgba(255, 255, 255, 0.08)"
-                              : "rgba(0, 0, 0, 0.04)",
+                          bgcolor: theme.palette.background.paper,
                         },
                       }}
                     >
@@ -221,7 +212,6 @@ export default function Contacto() {
                             sx={{
                               color: "text.primary",
                               textDecoration: "none",
-                              "&:hover": { color: "primary.main" },
                             }}
                           >
                             {info.value}
@@ -234,23 +224,28 @@ export default function Contacto() {
               </Stack>
 
               <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
-                {[GitHub, LinkedIn, WhatsApp].map((Icon, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <IconButton
-                      sx={{
-                        bgcolor: "primary.main",
-                        color: "white",
-                        "&:hover": { bgcolor: "primary.dark" },
-                      }}
+                {[GitHub, LinkedIn, WhatsApp].map((Icon, index) => {
+                  const labels = ["GitHub", "LinkedIn", "WhatsApp"]; // Nombres accesibles
+
+                  return (
+                    <motion.div
+                      key={index}
+                      whileHover={{ y: -5 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <Icon />
-                    </IconButton>
-                  </motion.div>
-                ))}
+                      <IconButton
+                        aria-label={labels[index]} // Asigna un nombre accesible
+                        sx={{
+                          bgcolor: "primary.main",
+                          color: "white",
+                          "&:hover": { bgcolor: "primary.dark" },
+                        }}
+                      >
+                        <Icon />
+                      </IconButton>
+                    </motion.div>
+                  );
+                })}
               </Stack>
             </motion.div>
           </Grid>

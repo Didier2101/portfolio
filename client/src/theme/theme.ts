@@ -2,15 +2,17 @@
 import { createTheme } from "@mui/material/styles";
 
 // Tema claro
+// Tema claro
 export const lightTheme = createTheme({
   palette: {
     mode: "light",
     background: {
       default: "#ffffff",
-      paper: "#f5f5f5",
+      paper: "#eeeeee", // Más contraste con texto negro
     },
     text: {
-      primary: "#000000",
+      primary: "#212121", // Mejor contraste que #000000
+      secondary: "#424242", // Asegurar buen contraste en subtítulos
     },
   },
   typography: {
@@ -23,11 +25,12 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "#242424",
-      paper: "#333",
+      default: "#1e1e1e", // Más oscuro para mejor contraste
+      paper: "#2a2a2a", // Evitar gris medio que cause bajo contraste
     },
     text: {
-      primary: "rgba(255, 255, 255, 0.87)",
+      primary: "#ffffff", // Evita usar rgba con opacidad baja
+      secondary: "#b0b0b0", // Suficiente contraste para subtítulos
     },
   },
   typography: {

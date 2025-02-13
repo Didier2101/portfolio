@@ -28,16 +28,13 @@ export default function Proyectos() {
         minHeight: "100vh",
         pt: { xs: "58px", sm: "65px" },
         pb: 8,
-        bgcolor: "background.default",
+        bgcolor: theme.palette.background.default,
       }}
     >
       {/* Hero Section */}
       <Box
         sx={{
-          bgcolor:
-            theme.palette.mode === "dark"
-              ? "rgba(30, 30, 30, 0.8)"
-              : "rgba(245, 245, 245, 0.8)",
+          bgcolor: theme.palette.background.paper,
           py: 8,
         }}
       >
@@ -136,6 +133,10 @@ export default function Proyectos() {
                         </motion.div>
                       ))}
                     </Box>
+
+                    <Typography variant="body2" color="text.secondary">
+                      {proyecto.categoria}
+                    </Typography>
 
                     <Box sx={{ display: "flex", gap: 2, mt: "auto", pt: 2 }}>
                       <Chip
