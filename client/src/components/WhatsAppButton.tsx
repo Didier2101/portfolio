@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
       transition={{ duration: 0.5 }}
       sx={{
         position: "fixed",
-        bottom: 32,
+        bottom: 100,
         right: 32,
         zIndex: 1000,
       }}

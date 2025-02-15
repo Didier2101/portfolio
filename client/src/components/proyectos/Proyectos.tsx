@@ -93,10 +93,6 @@ export default function Proyectos() {
                   sx={{
                     p: 3,
                     height: "100%",
-                    bgcolor:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255, 255, 255, 0.05)"
-                        : "rgba(0, 0, 0, 0.02)",
                   }}
                 >
                   <Stack spacing={2}>
@@ -119,17 +115,7 @@ export default function Proyectos() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.2 + techIndex * 0.1 }}
                         >
-                          <Chip
-                            size="small"
-                            icon={<CodeIcon />}
-                            label={tech}
-                            sx={{
-                              bgcolor:
-                                theme.palette.mode === "dark"
-                                  ? "rgba(255, 255, 255, 0.05)"
-                                  : "rgba(0, 0, 0, 0.05)",
-                            }}
-                          />
+                          <Chip size="small" icon={<CodeIcon />} label={tech} />
                         </motion.div>
                       ))}
                     </Box>

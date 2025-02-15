@@ -6,7 +6,6 @@ import {
   Paper,
   Button,
   IconButton,
-  Avatar,
   Chip,
   Stack,
   useTheme,
@@ -22,7 +21,6 @@ import {
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
 // Opción 3: Usando import (añadir al inicio del archivo)
-import perfilImage from "../../../public/perfil.webp";
 import { proyectos } from "../../../data/proyectosData";
 import { calcularExperiencia } from "../../../utils/calcularExperiencia"; // Importa la función
 
@@ -192,30 +190,6 @@ const SobreMi = () => {
                 </Stack>
               </motion.div>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Avatar
-                  sx={{
-                    width: { xs: 200, md: 300 },
-                    height: { xs: 200, md: 300 },
-                    border: "4px solid",
-                    borderColor: "primary.main",
-                    // boxShadow: theme.shadows[10],
-                  }}
-                  alt="Didier Chavez"
-                  src={perfilImage}
-                />
-              </motion.div>
-            </Grid>
           </Grid>
         </Container>
       </Box>
@@ -233,9 +207,9 @@ const SobreMi = () => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.8 }}
               >
-                Soy un{" "}
-                <strong>Tecnólogo en Análisis y Desarrollo de Software</strong>,
-                graduado del SENA, con una sólida formación en creación de
+                Soy
+                <strong> Tecnólogo en Análisis y Desarrollo de Software</strong>
+                , graduado del SENA, con una sólida formación en creación de
                 soluciones tecnológicas innovadoras. Desde que descubrí mi
                 pasión por la programación, he dedicado mi tiempo a dominar las
                 herramientas y tecnologías que me permiten transformar ideas en
@@ -307,7 +281,7 @@ const SobreMi = () => {
                           : ""}{" "}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Tiempo de Experiencia
+                        Tiempo de Experiencia Laboral
                       </Typography>
                     </Paper>
                   </Grid>

@@ -26,10 +26,15 @@ export default function Tecnologias() {
       icon: WebIcon,
       skills: [
         { name: "React", level: 90 },
-        { name: "TypeScript", level: 85 },
-        { name: "Material-UI", level: 88 },
-        { name: "Next.js", level: 82 },
-        { name: "CSS/SASS", level: 85 },
+        { name: "Next.js", level: 85 },
+        { name: "TypeScript", level: 88 },
+        { name: "JavaScript (ES6+)", level: 90 },
+        { name: "Material-UI", level: 80 },
+        { name: "Tailwind CSS", level: 85 },
+        { name: "Styled Components", level: 75 },
+        { name: "Zustand", level: 70 },
+        { name: "SASS/SCSS", level: 78 },
+        { name: "Vite", level: 85 },
       ],
     },
     {
@@ -37,37 +42,33 @@ export default function Tecnologias() {
       icon: StorageIcon,
       skills: [
         { name: "Node.js", level: 85 },
-        { name: "Python", level: 80 },
-        { name: "Django", level: 75 },
-        { name: "Express", level: 85 },
-        { name: "FastAPI", level: 70 },
+        { name: "Express.js", level: 88 },
+        { name: "REST APIs", level: 85 },
+        { name: "JWT Authentication", level: 85 },
+        { name: "Prisma ORM", level: 80 },
+        { name: "Sequelize ORM", level: 75 },
       ],
     },
     {
-      title: "Herramientas",
+      title: "Bases de Datos",
+      icon: StorageIcon,
+      skills: [{ name: "MySQL", level: 90 }],
+    },
+    {
+      title: "Herramientas y DevOps",
       icon: BuildIcon,
       skills: [
         { name: "Git", level: 88 },
-        { name: "Docker", level: 75 },
-        { name: "Webpack", level: 70 },
+        { name: "Docker", level: 80 },
+        { name: "GitHub", level: 75 },
         { name: "Jest", level: 80 },
-        { name: "CI/CD", level: 75 },
+        { name: "ESLint", level: 85 },
+        { name: "AWS (RDS)", level: 70 },
       ],
     },
   ];
 
-  const otherTechnologies = [
-    "Redux",
-    "GraphQL",
-    "MongoDB",
-    "PostgreSQL",
-    "AWS",
-    "Firebase",
-    "Vue.js",
-    "Tailwind",
-    "Angular",
-    "Socket.io",
-  ];
+  const otherTechnologies = ["Vercel", "Render", "Netlify", "Google Cloud"];
 
   return (
     <Box
@@ -140,7 +141,6 @@ export default function Tecnologias() {
                   elevation={0}
                   sx={{
                     p: 3,
-                    bgcolor: theme.palette.background.paper,
                     height: "100%",
                   }}
                 >
@@ -178,7 +178,6 @@ export default function Tecnologias() {
                             sx={{
                               height: 6,
                               borderRadius: 3,
-                              bgcolor: theme.palette.background.paper,
                               "& .MuiLinearProgress-bar": {
                                 borderRadius: 3,
                               },
@@ -203,9 +202,8 @@ export default function Tecnologias() {
           <Paper
             elevation={0}
             sx={{
-              p: 4,
+              p: 2,
               mt: 4,
-              bgcolor: theme.palette.background.paper,
             }}
           >
             <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>

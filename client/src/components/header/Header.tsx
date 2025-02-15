@@ -108,7 +108,10 @@ const Header = () => {
       sx={{
         userSelect: "none",
         backdropFilter: "blur(8px)",
-        bgcolor: (theme) => theme.palette.background.default,
+        bgcolor: (theme) =>
+          theme.palette.mode === "dark"
+            ? "rgba(0, 0, 0, 0.6)" // Fondo oscuro en modo dark
+            : "rgba(255, 255, 255, 0.6)", // Fondo claro en modo light
         boxShadow: "none",
         borderBottom: "1px solid",
         borderColor: "divider",

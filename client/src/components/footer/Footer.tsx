@@ -55,7 +55,7 @@ export default function Footer() {
       component="footer"
       sx={{
         userSelect: "none",
-        bgcolor: theme.palette.background.default,
+        bgcolor: theme.palette.background.paper,
         py: 6,
         mt: "auto",
       }}

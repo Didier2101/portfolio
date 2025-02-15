@@ -1,18 +1,23 @@
 // src/theme/theme.ts
 import { createTheme } from "@mui/material/styles";
 
-// Tema claro
+
 // Tema claro
 export const lightTheme = createTheme({
   palette: {
     mode: "light",
+    primary: {
+      main: "#00695c", // Aquí cambiamos el color principal a teal-800
+      light: "#439889", // Versión más clara del teal
+      dark: "#003d33", // Versión más oscura del teal
+    },
     background: {
       default: "#ffffff",
-      paper: "#eeeeee", // Más contraste con texto negro
+      paper: "#f1f1f1", // Más contraste con texto negro
     },
     text: {
-      primary: "#212121", // Mejor contraste que #000000
-      secondary: "#424242", // Asegurar buen contraste en subtítulos
+      primary: "#424242",
+      secondary: "#757575",
     },
   },
   typography: {

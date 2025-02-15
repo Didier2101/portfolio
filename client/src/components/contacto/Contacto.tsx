@@ -193,9 +193,10 @@ export default function Contacto() {
                     <Card
                       elevation={0}
                       sx={{
-                        bgcolor: theme.palette.background.default,
+                        bgcolor: theme.palette.background.paper,
+                        transition: "transform 0.3s ease-in-out", // Agrega una transición suave
                         "&:hover": {
-                          bgcolor: theme.palette.background.paper,
+                          transform: "scale(1.05)", // Aumenta el tamaño al 150% en hover
                         },
                       }}
                     >
@@ -223,6 +224,7 @@ export default function Contacto() {
                 ))}
               </Stack>
 
+              {/* iconos redes */}
               <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
                 {[GitHub, LinkedIn, WhatsApp].map((Icon, index) => {
                   const labels = ["GitHub", "LinkedIn", "WhatsApp"]; // Nombres accesibles
@@ -260,11 +262,7 @@ export default function Contacto() {
               <Paper
                 elevation={0}
                 sx={{
-                  p: 4,
-                  bgcolor:
-                    theme.palette.mode === "dark"
-                      ? "rgba(255, 255, 255, 0.05)"
-                      : "rgba(0, 0, 0, 0.02)",
+                  p: 3,
                 }}
               >
                 <Typography
