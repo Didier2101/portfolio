@@ -30,10 +30,20 @@ export const proyectos: Proyecto[] = [
     },
     {
         titulo: "Poits Solutions",
-        descripcion: "Poits Solutions es una empresa dedicada al desarrollo de software, ofreciendo soluciones innovadoras y personalizadas para diversas necesidades tecnológicas.",
+        descripcion:
+            "Poits Solutions es una empresa dedicada al desarrollo de software, ofreciendo soluciones innovadoras y personalizadas para diversas necesidades tecnológicas.",
         tecnologias: ["NextJs", "TailWind", "MySql", "Prisma"],
         github: "https://github.com/Didier2101/poits_solutions",
         demo: "https://poits-solutions.vercel.app/",
+        categoria: "Full Stack",
+    },
+    {
+        titulo: "Nubeware",
+        descripcion:
+            "Nubeware es una empresa de desarrollo de software que ofrece soluciones empresariales innovadoras basadas en la nube, enfocadas en optimizar procesos y mejorar la eficiencia tecnológica.",
+        tecnologias: ["NextJs", "TailwindCSS", "TypeScript",],
+        github: "https://github.com/Didier2101/nubeware.git",
+        demo: "https://nubeware.ai/",
         categoria: "Full Stack",
     },
 ];

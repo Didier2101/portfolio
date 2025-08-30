@@ -1,390 +1,164 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Paper,
-  Button,
-  IconButton,
-  Chip,
-  Stack,
-  useTheme,
-} from "@mui/material";
-import {
-  Code as CodeIcon,
-  Facebook,
-  GitHub,
-  LinkedIn,
-  Instagram,
-  Mail,
-  Download,
-} from "@mui/icons-material";
 import { motion } from "framer-motion";
-// Opción 3: Usando import (añadir al inicio del archivo)
-import { proyectos } from "../../../data/proyectosData";
-import { calcularExperiencia } from "../../../utils/calcularExperiencia"; // Importa la función
+import { Mail, Users, Building2, Cpu } from "lucide-react";
+import profilePic from "../../assets/1756408357649.png";
+import { useState, useEffect } from "react";
+import { calcularExperiencia } from "../../../utils/calcularExperiencia";
+import { proyectos } from "../../../data/proyectosData"; // Importa los proyectos
+import { Link } from "react-router-dom";
 
-const SobreMi = () => {
-  const theme = useTheme();
-  // Fecha de inicio de experiencia
-  const fechaInicioExperiencia = new Date(2025, 0, 1); // 1 de enero de 2025
+export default function SobreMi() {
+  const [experiencia, setExperiencia] = useState({ años: 0, meses: 0 });
 
-  // Obtener años y meses de experiencia
-  const { años, meses } = calcularExperiencia(fechaInicioExperiencia);
+  useEffect(() => {
+    const fechaInicio = new Date(2025, 0, 1); // Enero 2025
+    setExperiencia(calcularExperiencia(fechaInicio));
+  }, []);
 
-  const technologies = [
-    "Html",
-    "Css",
-    "JavaScript",
-    "Vite",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Next.js",
-    "Material-UI",
-    "Tailwind CSS",
-    "MySql",
-    "Prisma",
-    "Express",
-    "Git",
+  const expertise = [
+    {
+      title: "Arquitectura Backend",
+      desc: "Diseño y desarrollo de APIs escalables con Node.js, NextJS y bases de datos relacionales.",
+      icon: Cpu,
+    },
+    {
+      title: "Aplicaciones Empresariales",
+      desc: "Implementación de soluciones digitales adaptadas a procesos internos y objetivos estratégicos.",
+      icon: Building2,
+    },
+    {
+      title: "Colaboración y Liderazgo",
+      desc: "Trabajo en equipos multidisciplinarios, aplicando metodologías ágiles y buenas prácticas.",
+      icon: Users,
+    },
   ];
 
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
-
-  const containerAnimation = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const handleMailClick = () => {
-    const email = "didierchavez2101@gmail.com";
-    const subject = "Estoy interesado en tus servicios";
-    const body = "Hola, quiero contactarte.";
-
-    try {
-      // Crear URL de Gmail con parámetros
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-
-      // Abrir Gmail en una nueva pestaña
-      window.open(gmailUrl, "_blank");
-    } catch (error) {
-      console.error("Error al abrir Gmail:", error);
-      // Fallback al mailto tradicional
-      const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-    }
-  };
-
-  const handleDownloadCV = () => {
-    try {
-      // ID extraído de tu enlace de Google Drive
-      const fileId = "1AWo651hQwMQMEwI2o02jcXGRpmowQZhw";
-
-      // URL de descarga directa de Google Drive
-      const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-
-      // Abre la URL en una nueva pestaña
-      window.open(downloadUrl, "_blank");
-
-      // También podrías usar este método alternativo que fuerza la descarga
-      // const directUrl = `https://drive.google.com/file/d/${fileId}/view`;
-      // window.open(directUrl, '_blank');
-    } catch (error) {
-      console.error("Error al descargar el CV:", error);
-    }
-  };
-
   return (
-    <Box
-      component="main"
-      sx={{
-        userSelect: "none",
-        minHeight: "100vh",
-        pt: { xs: "58px", sm: "65px" }, // Ajuste para el header fijo
-        bgcolor: theme.palette.background.default,
-      }}
-    >
-      {/* Hero Section */}
-      <Box
-        sx={{
-          position: "relative",
-          overflow: "hidden",
-          pt: 8,
-          pb: 12,
-          bgcolor: theme.palette.background.paper,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="space-between">
-            <Grid item xs={12} md={6}>
-              <motion.div {...fadeIn}>
-                <Stack spacing={2}>
-                  <Typography
-                    variant="overline"
-                    sx={{
-                      letterSpacing: 4,
-                      color: "primary.dark", // Usa un tono más oscuro
-                      fontWeight: 600,
-                    }}
-                  >
-                    DESARROLLADOR FULL STACK
-                  </Typography>
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+      {/* HERO */}
+      <section className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+        <div className="max-w-6xl mx-auto px-8 py-40 grid md:grid-cols-3 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="md:col-span-2"
+          >
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
+              Didier Chávez
+            </h1>
+            <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+              Consultor & Desarrollador de Software
+            </p>
+            <p className="mt-6 text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+              Especialista en{" "}
+              <span className="font-semibold text-blue-800 dark:text-blue-400">
+                soluciones empresariales
+              </span>{" "}
+              orientadas a optimizar procesos, mejorar la eficiencia operativa y
+              asegurar la escalabilidad tecnológica en organizaciones de
+              cualquier tamaño.
+            </p>
+            <div className="flex gap-4 mt-8">
+              <Link
+                to={"/contacto"}
+                className="px-6 py-3 rounded-lg bg-blue-900 text-white font-medium flex items-center gap-2 hover:bg-blue-950 transition"
+              >
+                <Mail className="w-5 h-5" /> Contacto
+              </Link>
 
-                  <Typography
-                    variant="h2"
-                    component="h1"
-                    sx={{ fontWeight: "bold" }}
-                  >
-                    Hola, soy
-                    <Box component="span" sx={{ color: "primary.main" }}>
-                      {" "}
-                      Didier
-                    </Box>
-                  </Typography>
-                  <Typography
-                    variant="h2"
-                    color="text.secondary"
-                    sx={{ lineHeight: 1.8, fontSize: "1rem" }}
-                  >
-                    Transformo ideas en experiencias digitales excepcionales,
-                    combinando diseño intuitivo con código limpio y eficiente.
-                  </Typography>
 
-                  <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      startIcon={<Mail />}
-                      sx={{ borderRadius: 2 }}
-                      onClick={handleMailClick}
-                    >
-                      Contáctame
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      startIcon={<Download />}
-                      sx={{
-                        borderRadius: 2,
-                        color: "primary.dark", // Usa un color más oscuro para mejorar el contraste
-                        borderColor: "primary.dark", // Asegura que el borde también sea visible
-                      }}
-                      onClick={handleDownloadCV}
-                    >
-                      Descargar CV
-                    </Button>
-                  </Stack>
-                </Stack>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="w-56 h-56 mx-auto rounded-full overflow-hidden ring-4 ring-gray-200 dark:ring-gray-800 shadow-lg"
+          >
+            <img
+              src={profilePic}
+              alt="Foto profesional"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SOBRE MÍ */}
+      <section className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-12 border-l-4 border-blue-800 dark:border-blue-400 pl-4">
+          Perfil Profesional
+        </h2>
+        <div className="grid md:grid-cols-3 gap-12">
+          <div className="md:col-span-2 space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p>
+              Soy un <strong>desarrollador Full Stack</strong> con enfoque en
+              proyectos de alto impacto tecnológico. Mi objetivo es apoyar a
+              empresas y organizaciones en la{" "}
+              <span className="font-semibold">transformación digital</span>,
+              mediante sistemas seguros, estables y alineados con sus metas
+              estratégicas.
+            </p>
+            <p>
+              Mi experiencia se centra en{" "}
+              <strong>Node.js, NestJS, React y bases de datos SQL</strong>,
+              complementado con metodologías ágiles y un enfoque orientado a
+              resultados.
+            </p>
+          </div>
+
+          {/* METRICAS */}
+          <div className="grid gap-6">
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 text-center shadow">
+              <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-400">
+                {proyectos.length}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Proyectos empresariales
+              </p>
+            </div>
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 text-center shadow">
+              <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-400">
+                {experiencia.años > 0 ? `${experiencia.años} año(s)` : ""}{" "}
+                {experiencia.meses} meses
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Experiencia profesional
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ÁREAS DE ESPECIALIZACIÓN */}
+      <section className="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-12 border-l-4 border-blue-800 dark:border-blue-400 pl-4">
+            Áreas de Especialización
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            {expertise.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-700"
+              >
+                <item.icon className="w-10 h-10 text-blue-900 dark:text-blue-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {item.desc}
+                </p>
               </motion.div>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* About Section */}
-      <Container maxWidth="lg" sx={{ py: 12 }}>
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6}>
-            <motion.div {...fadeIn}>
-              <Typography variant="h3" gutterBottom sx={{ fontWeight: "bold" }}>
-                Sobre Mí
-              </Typography>
-              <Typography
-                paragraph
-                color="text.secondary"
-                sx={{ lineHeight: 1.8 }}
-              >
-                Soy
-                <strong> Tecnólogo en Análisis y Desarrollo de Software</strong>
-                , graduado del SENA, con una sólida formación en creación de
-                soluciones tecnológicas innovadoras. Desde que descubrí mi
-                pasión por la programación, he dedicado mi tiempo a dominar las
-                herramientas y tecnologías que me permiten transformar ideas en
-                aplicaciones funcionales y escalables.
-              </Typography>
-              <Typography
-                paragraph
-                color="text.secondary"
-                sx={{ lineHeight: 1.8 }}
-              >
-                Mi experiencia abarca desde el desarrollo de aplicaciones web
-                modernas hasta la implementación de sistemas robustos y
-                eficientes. Me apasiona trabajar en equipo, resolver problemas
-                complejos y aprender constantemente para mantenerme al día con
-                las últimas tendencias tecnológicas.
-              </Typography>
-              <Typography
-                paragraph
-                color="text.secondary"
-                sx={{ lineHeight: 1.8 }}
-              >
-                Creo firmemente en el poder del código para mejorar la vida de
-                las personas, y es por eso que me esfuerzo por crear soluciones
-                que no solo sean funcionales, sino también intuitivas y
-                centradas en el usuario. Mi objetivo es seguir creciendo como
-                profesional y contribuir a proyectos que generen un impacto
-                positivo en el mundo.
-              </Typography>
-              <Box sx={{ mt: 4 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
-                    <Paper
-                      elevation={0}
-                      sx={{
-                        p: 3,
-                        bgcolor: "background.paper",
-                        borderRadius: 2,
-                      }}
-                    >
-                      <Typography
-                        variant="h4"
-                        color="primary.main"
-                        sx={{ fontWeight: "bold" }}
-                      >
-                        {proyectos.length}+
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Proyectos Completados
-                      </Typography>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Paper
-                      elevation={0}
-                      sx={{
-                        p: 3,
-                        bgcolor: "background.paper",
-                        borderRadius: 2,
-                      }}
-                    >
-                      <Typography
-                        variant="h4"
-                        color="primary.main"
-                        sx={{ fontWeight: "bold" }}
-                      >
-                        {años > 0 ? `${años} año${años > 1 ? "s" : ""}` : ""}{" "}
-                        {meses > 0
-                          ? `${meses} mes${meses > 1 ? "es" : ""}`
-                          : ""}{" "}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Tiempo de Experiencia Laboral
-                      </Typography>
-                    </Paper>
-                  </Grid>
-                </Grid>
-              </Box>
-            </motion.div>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <motion.div
-              variants={containerAnimation}
-              initial="hidden"
-              animate="show"
-            >
-              <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-                Tecnologías que uso
-              </Typography>
-              <Box sx={{ mt: 3 }}>
-                {technologies.map((tech) => (
-                  <Chip
-                    key={tech}
-                    label={tech}
-                    icon={<CodeIcon />}
-                    sx={{
-                      m: 0.5,
-                      bgcolor:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255, 255, 255, 0.05)"
-                          : "rgba(0, 0, 0, 0.05)",
-                      "&:hover": {
-                        bgcolor: "primary.main",
-                        color: "white",
-                        "& .MuiSvgIcon-root": {
-                          color: "white",
-                        },
-                      },
-                    }}
-                  />
-                ))}
-              </Box>
-
-              <Box sx={{ mt: 6 }}>
-                <Typography
-                  variant="h5"
-                  gutterBottom
-                  sx={{ fontWeight: "bold" }}
-                >
-                  Encuéntrame en
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-                  {[
-                    {
-                      icon: GitHub,
-                      url: "https://github.com/Didier2101",
-                      label: "GitHub",
-                    },
-                    {
-                      icon: LinkedIn,
-                      url: "https://www.linkedin.com/in/dcg-didierchavez",
-                      label: "LinkedIn",
-                    },
-                    {
-                      icon: Facebook,
-                      url: "https://www.facebook.com/",
-                      label: "Facebook",
-                    },
-                    {
-                      icon: Instagram,
-                      url: "https://www.instagram.com/didier_dcg/",
-                      label: "Instagram",
-                    },
-                  ].map((social, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ y: -5 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <IconButton
-                        component="a"
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{
-                          bgcolor: "primary.main",
-                          color: "white",
-                          "&:hover": {
-                            bgcolor: "primary.dark",
-                          },
-                        }}
-                        aria-label={`Ir a ${social.label}`} // 🔹 Agregamos el label accesible
-                      >
-                        <social.icon />
-                      </IconButton>
-                    </motion.div>
-                  ))}
-                </Stack>
-              </Box>
-            </motion.div>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
-};
-
-export default SobreMi;
+}

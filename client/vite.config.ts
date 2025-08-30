@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react';
 import sitemap from 'vite-plugin-sitemap';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import viteCompression from 'vite-plugin-compression';
+import tailwindcss from '@tailwindcss/vite'
 
 
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react(),
     sitemap({
       hostname: 'https://www.ibug.space',

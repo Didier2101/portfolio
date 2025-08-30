@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Estilos para WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 12px; /* Ancho de la barra de desplazamiento */

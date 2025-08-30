@@ -1,229 +1,141 @@
-import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  useMediaQuery,
-  Theme,
-  Container,
-} from "@mui/material";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 import {
   Menu as MenuIcon,
-  Person as PersonIcon,
-  ContactMail as ContactMailIcon,
+  PersonStanding as PersonIcon,
+  Mail as MailIcon,
   Code as CodeIcon,
   Folder as FolderIcon,
-  DarkMode as DarkModeIcon,
-  LightMode as LightModeIcon,
-} from "@mui/icons-material";
-import { NavLink } from "react-router-dom";
-import { useTheme } from "../../context/useTheme";
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import ThemeSwitcher from "./ThemeSwitcher"; // importamos el componente nuevo
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+  const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // scroll hide/show header
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (window.scrollY > lastScrollY) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", controlNavbar);
+    return () => window.removeEventListener("scroll", controlNavbar);
+  }, [lastScrollY]);
 
   const menuItems = [
     { text: "Sobre mí", path: "/", Icon: PersonIcon },
-    { text: "Contacto", path: "/contacto", Icon: ContactMailIcon },
+    { text: "Contacto", path: "/contacto", Icon: MailIcon },
     { text: "Tecnologías", path: "/tecnologias", Icon: CodeIcon },
     { text: "Proyectos", path: "/proyectos", Icon: FolderIcon },
   ];
 
-  const MotionListItem = motion(ListItem);
+  const variants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: "-100%" },
+  };
 
-  const DrawerList = (
-    <Box
-      sx={{
-        width: 250,
-        pt: 2,
-        background: (theme) => theme.palette.background.default,
-        height: "100%",
-      }}
-      role="presentation"
-      onClick={() => setOpen(false)}
+  const MobileMenu = (
+    <motion.div
+      initial="closed"
+      animate={open ? "open" : "closed"}
+      variants={variants}
+      transition={{ type: "tween" }}
+      className="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-950 p-6 shadow-xl transform md:hidden"
     >
-      <List>
+      <ul className="flex flex-col space-y-2 pt-20">
         {menuItems.map((item, index) => (
-          <MotionListItem
+          <motion.li
             key={item.text}
-            disablePadding
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: index * 0.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + index * 0.05 }}
+            onClick={() => setOpen(false)}
           >
-            <ListItemButton
-              component={NavLink}
+            <NavLink
               to={item.path}
-              sx={{
-                borderRadius: 1,
-                mx: 1,
-                color: "text.primary",
-                "&.active": {
-                  bgcolor: "primary.main",
-                  color: "primary.contrastText",
-                  "& .MuiListItemIcon-root": {
-                    color: "primary.contrastText",
-                  },
-                },
-                "&:hover": {
-                  bgcolor: "primary.main",
-                  opacity: 0.8,
-                  color: "primary.contrastText",
-                  "& .MuiListItemIcon-root": {
-                    color: "primary.contrastText",
-                  },
-                },
-                "& .MuiListItemIcon-root": {
-                  color: "text.primary",
-                },
-              }}
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-3 rounded-lg font-medium transition-colors duration-200 ease-in-out ${isActive
+                  ? "bg-blue-900 text-white shadow-md"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`
+              }
             >
-              <ListItemIcon>
-                <item.Icon />
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </MotionListItem>
+              <item.Icon size={20} />
+              <span>{item.text}</span>
+            </NavLink>
+          </motion.li>
         ))}
-      </List>
-    </Box>
+      </ul>
+    </motion.div>
   );
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        userSelect: "none",
-        backdropFilter: "blur(8px)",
-        bgcolor: (theme) =>
-          theme.palette.mode === "dark"
-            ? "rgba(0, 0, 0, 0.6)" // Fondo oscuro en modo dark
-            : "rgba(255, 255, 255, 0.6)", // Fondo claro en modo light
-        boxShadow: "none",
-        borderBottom: "1px solid",
-        borderColor: "divider",
-        color: (theme) => theme.palette.text.primary, // Añadido para asegurar el contraste del texto
-      }}
-    >
-      <Container maxWidth="lg">
-        <Toolbar disableGutters>
-          {isMobile && (
-            <IconButton
-              aria-label="open drawer"
-              onClick={() => setOpen(true)}
-              edge="start"
-              sx={{
-                mr: 2,
-                color: "text.primary",
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-
-          <Typography
-            variant="h6"
-            component={NavLink}
-            to="/"
-            sx={{
-              flexGrow: 1,
-              textDecoration: "none",
-              color: "text.primary",
-              fontWeight: 700,
-              letterSpacing: "-0.5px",
-            }}
-          >
-            {"<!BUG />"}
-          </Typography>
-
-          {!isMobile && (
-            <Box
-              sx={{
-                display: "flex",
-                gap: 4,
-                alignItems: "center",
-              }}
-            >
-              {menuItems.map((item) => (
-                <motion.div
-                  key={item.text}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                >
-                  <Typography
-                    component={NavLink}
-                    to={item.path}
-                    sx={{
-                      textDecoration: "none",
-                      color: "text.primary",
-                      position: "relative",
-                      "&::after": {
-                        content: '""',
-                        position: "absolute",
-                        width: "0%",
-                        height: "2px",
-                        bottom: "-4px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        backgroundColor: "primary.main",
-                        transition: "width 0.3s ease",
-                      },
-                      "&.active::after, &:hover::after": {
-                        width: "100%",
-                      },
-                      "&.active": {
-                        color: "primary.main",
-                      },
-                    }}
-                  >
-                    {item.text}
-                  </Typography>
-                </motion.div>
-              ))}
-            </Box>
-          )}
-
-          <Box sx={{ display: "flex", alignItems: "center", ml: 2 }}>
-            <IconButton
-              onClick={toggleTheme}
-              size="small"
-              sx={{ color: "text.primary" }}
-              aria-label={
-                isDarkMode ? "Activar modo claro" : "Activar modo oscuro"
-              }
-            >
-              {isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </Container>
-
-      <Drawer
-        anchor="left"
-        open={open}
-        onClose={() => setOpen(false)}
-        PaperProps={{
-          sx: {
-            backgroundColor: "background.default",
-          },
-        }}
+    <>
+      <motion.header
+        initial={{ y: 0 }}
+        animate={{ y: visible ? 0 : -100 }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-0 left-0 w-full z-40 bg-white/70 dark:bg-gray-950 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300"
       >
-        {DrawerList}
-      </Drawer>
-    </AppBar>
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative flex items-center justify-between h-20">
+            {/* Logo */}
+            <div className="flex-1 flex items-center justify-start">
+              <NavLink
+                to="/"
+                className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2"
+              >
+                <CodeIcon size={28} className="text-blue-800 dark:text-blue-400" />
+                Didier<span className="text-blue-800 dark:text-blue-400">Dev</span>
+              </NavLink>
+            </div>
+
+            {/* Links desktop */}
+            <div className="hidden md:flex space-x-8 items-center">
+              {menuItems.map((item) => (
+                <NavLink
+                  key={item.text}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 text-base font-medium transition-colors duration-200 ${isActive
+                      ? "text-blue-900 dark:text-blue-400"
+                      : "text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-400"
+                    }`
+                  }
+                >
+                  <item.Icon size={18} />
+                  {item.text}
+                </NavLink>
+              ))}
+            </div>
+
+            {/* Theme switcher + menú móvil */}
+            <div className="flex items-center space-x-4 ml-10">
+              <ThemeSwitcher />
+              <button
+                type="button"
+                className="md:hidden p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+                onClick={() => setOpen(!open)}
+                aria-controls="mobile-menu"
+                aria-expanded={open ? "true" : "false"}
+                aria-label="Toggle navigation"
+              >
+                <MenuIcon size={26} />
+              </button>
+            </div>
+
+          </div>
+        </nav>
+      </motion.header>
+      {open && MobileMenu}
+    </>
   );
 };
 

@@ -1,166 +1,105 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Paper,
-  Stack,
-  Chip,
-  useTheme,
-} from "@mui/material";
-import {
-  Folder as FolderIcon,
-  GitHub as GitHubIcon,
-  Launch as LaunchIcon,
-  Code as CodeIcon,
-} from "@mui/icons-material";
 import { motion } from "framer-motion";
-import { proyectos } from "../../../data/proyectosData"; // Importa el array de proyectos
+import { Github, ExternalLink, Briefcase, Globe, Server, Building2 } from "lucide-react";
+import { proyectos } from "../../../data/proyectosData";
+
+const icons = [Briefcase, Server, Globe, Building2]; // Rotación de iconos empresariales
 
 export default function Proyectos() {
-  const theme = useTheme();
-
   return (
-    <Box
-      component="main"
-      sx={{
-        userSelect: "none",
-        minHeight: "100vh",
-        pt: { xs: "58px", sm: "65px" },
-        pb: 8,
-        bgcolor: theme.palette.background.default,
-      }}
-    >
-      {/* Hero Section */}
-      <Box
-        sx={{
-          bgcolor: theme.palette.background.paper,
-          py: 8,
-        }}
-      >
-        <Container maxWidth="lg">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Typography
-              variant="overline"
-              display="block"
-              textAlign="center"
-              sx={{
-                color: "primary.main",
-                letterSpacing: 4,
-                mb: 2,
-              }}
+    <section className="min-h-screen w-full bg-gray-50 dark:bg-gray-950 pt-28 pb-24 px-4">
+      {/* Cabecera empresarial */}
+      <div className="max-w-5xl mx-auto px-6 text-center mb-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+        >
+          Soluciones Desarrolladas
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+        >
+          Proyectos implementados con enfoque en eficiencia, escalabilidad y
+          valor empresarial.
+        </motion.p>
+      </div>
+
+      {/* Lista de proyectos */}
+      <div className="max-w-5xl mx-auto divide-y divide-gray-200 dark:divide-gray-800">
+        {proyectos.map((proyecto, index) => {
+          const Icon = icons[index % icons.length];
+          return (
+            <motion.div
+              key={proyecto.titulo}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="py-12 grid md:grid-cols-3 gap-8 items-start"
             >
-              PORTAFOLIO
-            </Typography>
-            <Typography
-              variant="h2"
-              component="h1"
-              textAlign="center"
-              gutterBottom
-              sx={{ fontWeight: "bold" }}
-            >
-              Mis Proyectos
-            </Typography>
-            <Typography
-              variant="h5"
-              textAlign="center"
-              color="text.secondary"
-              sx={{ maxWidth: 600, mx: "auto" }}
-            >
-              Una selección de mis trabajos más destacados y proyectos
-              personales
-            </Typography>
-          </motion.div>
-        </Container>
-      </Box>
+              {/* Icono + título */}
+              <div className="flex items-start gap-4 md:col-span-1">
+                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    {proyecto.titulo}
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {proyecto.categoria}
+                  </p>
+                </div>
+              </div>
 
-      {/* Projects Grid */}
-      <Container maxWidth="lg" sx={{ mt: 8 }}>
-        <Grid container spacing={4}>
-          {proyectos.map((proyecto, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <Paper
-                  elevation={0}
-                  sx={{
-                    p: 3,
-                    height: "100%",
-                  }}
-                >
-                  <Stack spacing={2}>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      <FolderIcon color="primary" />
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        {proyecto.titulo}
-                      </Typography>
-                    </Box>
+              {/* Descripción */}
+              <div className="md:col-span-2 space-y-4">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {proyecto.descripcion}
+                </p>
 
-                    <Typography variant="body2" color="text.secondary">
-                      {proyecto.descripcion}
-                    </Typography>
+                {/* Tecnologías */}
+                <div className="flex flex-wrap gap-2">
+                  {proyecto.tecnologias.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 rounded-full text-gray-700 dark:text-gray-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                    <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-                      {proyecto.tecnologias.map((tech, techIndex) => (
-                        <motion.div
-                          key={techIndex}
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.2 + techIndex * 0.1 }}
-                        >
-                          <Chip size="small" icon={<CodeIcon />} label={tech} />
-                        </motion.div>
-                      ))}
-                    </Box>
-
-                    <Typography variant="body2" color="text.secondary">
-                      {proyecto.categoria}
-                    </Typography>
-
-                    <Box sx={{ display: "flex", gap: 2, mt: "auto", pt: 2 }}>
-                      <Chip
-                        clickable
-                        component="a"
-                        href={proyecto.github}
-                        target="_blank"
-                        icon={<GitHubIcon />}
-                        label="GitHub"
-                        sx={{
-                          "&:hover": {
-                            bgcolor: "primary.main",
-                            color: "white",
-                          },
-                        }}
-                      />
-                      <Chip
-                        clickable
-                        component="a"
-                        href={proyecto.demo}
-                        target="_blank"
-                        icon={<LaunchIcon />}
-                        label="Demo"
-                        sx={{
-                          "&:hover": {
-                            bgcolor: "primary.main",
-                            color: "white",
-                          },
-                        }}
-                      />
-                    </Box>
-                  </Stack>
-                </Paper>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
+                {/* Links */}
+                <div className="flex gap-6 pt-2">
+                  <a
+                    href={proyecto.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    Código
+                  </a>
+                  <a
+                    href={proyecto.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-medium text-blue-700 dark:text-blue-400 hover:underline"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
