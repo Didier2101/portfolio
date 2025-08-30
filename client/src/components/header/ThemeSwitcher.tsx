@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { Sun, Moon, Laptop } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
