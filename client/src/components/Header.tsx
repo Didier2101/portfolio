@@ -1,21 +1,24 @@
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   Menu as MenuIcon,
-  PersonStanding as PersonIcon,
+  Home as HomeIcon,
   Mail as MailIcon,
   Code as CodeIcon,
-  Folder as FolderIcon,
+  FolderKanban as WorkflowIcon,
+  Monitor as DemoIcon,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import ThemeSwitcher from "./ThemeSwitcher"; // importamos el componente nuevo
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+import ThemeSwitcher from "./ThemeSwitcher";
+import Logo from "./Logo";
+
+const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // scroll hide/show header
+  // Mostrar/ocultar header al hacer scroll
   useEffect(() => {
     const controlNavbar = () => {
       if (window.scrollY > lastScrollY) {
@@ -29,11 +32,13 @@ const Header = () => {
     return () => window.removeEventListener("scroll", controlNavbar);
   }, [lastScrollY]);
 
+  // Menú
   const menuItems = [
-    { text: "Sobre mí", path: "/", Icon: PersonIcon },
+    { text: "Inicio", path: "/", Icon: HomeIcon },
+    { text: "Servicios", path: "/servicios", Icon: CodeIcon },
+    { text: "Cómo trabajamos", path: "/workflow", Icon: WorkflowIcon },
+    { text: "Demos", path: "/demos", Icon: DemoIcon },
     { text: "Contacto", path: "/contacto", Icon: MailIcon },
-    { text: "Tecnologías", path: "/tecnologias", Icon: CodeIcon },
-    { text: "Proyectos", path: "/proyectos", Icon: FolderIcon },
   ];
 
   const variants = {
@@ -41,6 +46,7 @@ const Header = () => {
     closed: { opacity: 0, x: "-100%" },
   };
 
+  // Mobile menu
   const MobileMenu = (
     <motion.div
       initial="closed"
@@ -49,7 +55,8 @@ const Header = () => {
       transition={{ type: "tween" }}
       className="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-950 p-6 shadow-xl transform md:hidden"
     >
-      <ul className="flex flex-col space-y-2 pt-20">
+      <Logo />
+      <ul className="flex flex-col space-y-2 pt-4">
         {menuItems.map((item, index) => (
           <motion.li
             key={item.text}
@@ -62,7 +69,7 @@ const Header = () => {
               to={item.path}
               className={({ isActive }) =>
                 `flex items-center gap-3 p-3 rounded-lg font-medium transition-colors duration-200 ease-in-out ${isActive
-                  ? "bg-blue-900 text-white shadow-md"
+                  ? "text-blue-900 dark:text-blue-400"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`
               }
@@ -87,14 +94,8 @@ const Header = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex-1 flex items-center justify-start">
-              <NavLink
-                to="/"
-                className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2"
-              >
-                <CodeIcon size={28} className="text-blue-800 dark:text-blue-400" />
-                Didier<span className="text-blue-800 dark:text-blue-400">Dev</span>
-              </NavLink>
+            <div className="flex items-center">
+              <Logo />
             </div>
 
             {/* Links desktop */}
@@ -130,7 +131,6 @@ const Header = () => {
                 <MenuIcon size={26} />
               </button>
             </div>
-
           </div>
         </nav>
       </motion.header>
