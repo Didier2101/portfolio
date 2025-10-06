@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
     <loc>https://www.ibug.space/</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ibug.space/" />
   </url>
 
   <url>
     <loc>https://www.ibug.space/servicios</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/services" />
   </url>
 
   <url>
     <loc>https://www.ibug.space/workflow</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/workflow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/workflow" />
   </url>
 
   <url>
     <loc>https://www.ibug.space/demos</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/demos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/demos" />
   </url>
 
   <url>
     <loc>https://www.ibug.space/contacto</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/contact" />
   </url>
 
 </urlset>

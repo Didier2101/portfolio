@@ -1,9 +1,8 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://www.ibug.space/sitemap.xml
 
-# Bloquea carpetas de desarrollo
-Disallow: /src/
-Disallow: /node_modules/
-Disallow: /dist/c 
+# Directivas opcionales
+Disallow: /admin
+Disallow: /private
+Crawl-delay: 1
