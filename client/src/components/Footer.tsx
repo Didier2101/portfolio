@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, MapPin, } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useLanguage } from "./contexts/LanguageContext";
+import logo from "../assets/logo-vadya-solo.png";
 
 const Footer: React.FC = () => {
     const { t } = useLanguage();
@@ -54,10 +55,11 @@ const Footer: React.FC = () => {
                     >
                         <div className="flex items-center gap-3 ">
                             <img
-                                src="/src/assets/logo-vadya-solo.png"
+                                src={logo}
                                 alt="Vadya Logo"
-                                className="h-8 w-auto -ml-4 -mt-1" // Ajusta el tamaño según necesites
+                                className=" h-8 w-auto -ml-4 -mt-1"
                             />
+
                             <p className="text-gray-300 text-sm leading-relaxed font-mono">
                                 {t.footer.description}
                             </p>
