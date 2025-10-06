@@ -1,35 +1,39 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
 
-/* Estilos para WebKit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 12px; /* Ancho de la barra de desplazamiento */
+/* ----------- Scrollbar personalizado (solo desktop) ----------- */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #f97316; /* orange-500 */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ea580c; /* orange-600 */
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #f97316 #0a0a0a;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color de fondo del riel */
-  border-radius: 10px; /* Bordes redondeados */
-}
+/* En móvil: scrollbar invisible (nativa del sistema) */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #888; /* Color del pulgar */
-  border-radius: 10px; /* Bordes redondeados */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color del pulgar al hacer hover */
-}
-
-/* Estilos para Firefox */
-html {
-  scrollbar-width: thin; /* Ancho de la barra de desplazamiento */
-  scrollbar-color: #888 #f1f1f1; /* Color del pulgar y del riel */
-}
-
-/* Estilos para Internet Explorer (opcional) */
-/* Nota: IE no soporta personalización avanzada del scroll */
-body {
-  scrollbar-base-color: #f1f1f1; /* Color base del scroll en IE */
-  scrollbar-face-color: #888; /* Color del pulgar en IE */
-  scrollbar-track-color: #f1f1f1; /* Color del riel en IE */
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

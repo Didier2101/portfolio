@@ -14,7 +14,7 @@ const allowedOrigins = [
   "https://www.ibug.space",
   "https://ibug.space",
   "http://localhost:5173",
-  "https://portfolio-gnkh.onrender.com",
+  "https://ibug-backend.onrender.com",
 ];
 
 // Middleware de CORS
