@@ -48,9 +48,9 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="flex justify-center items-center gap-3 mb-4">
-                        <Terminal className="text-orange-400" size={32} />
-                        <h1 className="text-4xl md:text-6xl font-bold text-white font-mono">
-                            Vadya<span className="text-orange-400">_</span>
+
+                        <h1 className="text-4xl md:text-6xl font-bold text-orange-400 font-mono">
+                            Aurora<span className="text-orange-400"> Luminis</span>
                         </h1>
                     </div>
 

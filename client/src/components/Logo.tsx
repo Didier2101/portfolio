@@ -1,4 +1,4 @@
-import logo from "../assets/logo-vadya-con-texto.png";
+import logo from "../assets/logo-aurora.png";
 import { NavLink } from "react-router-dom";
 
 export default function Logo() {

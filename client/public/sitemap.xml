@@ -49,4 +49,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/contact" />
   </url>
 
+   <url>
+    <loc>https://www.ibug.space/contacto</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ibug.space/productos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ibug.space/en/productos" />
+  </url>
+
 </urlset>

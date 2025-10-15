@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, MapPin, } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useLanguage } from "./contexts/LanguageContext";
-import logo from "../assets/logo-vadya-solo.png";
+import logo from "../assets/logo-aurora-solo.png";
 
 const Footer: React.FC = () => {
     const { t } = useLanguage();
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
     ];
 
     const contactInfo = [
-        { icon: Mail, text: "contacto@vadya.space" },
+        { icon: Mail, text: "contacto@Aurora Luminis.space" },
         { icon: Phone, text: "+57 302 864 5014" },
         { icon: MapPin, text: "Bogotá, Colombia" },
     ];
@@ -56,8 +56,8 @@ const Footer: React.FC = () => {
                         <div className="flex items-center gap-3 ">
                             <img
                                 src={logo}
-                                alt="Vadya Logo"
-                                className=" h-8 w-auto -ml-4 -mt-1"
+                                alt="Aurora Luminis Logo"
+                                className=" h-14 w-auto -ml-4 -mt-1"
                             />
 
                             <p className="text-gray-300 text-sm leading-relaxed font-mono">

@@ -9,6 +9,7 @@ const translations = {
             services: "Servicios",
             workflow: "Proceso",
             demos: "Demostraciones",
+            productos: "Productos", // ← AGREGADO
             contact: "Contacto",
             startProject: "Iniciar Proyecto",
         },
@@ -38,7 +39,7 @@ const translations = {
                 subtitle: "Lo que nuestros socios dicen de nosotros",
                 client1: "German Gonzalez",
                 role1: "CEO Nubeware.ai",
-                feedback1: "Vadya transformó nuestra página web. Rápido, profesional y muy atento a nuestros requerimientos.",
+                feedback1: "Aurora Luminis transformó nuestra página web. Rápido, profesional y muy atento a nuestros requerimientos.",
                 client2: "Jully Mar",
                 role2: "Gerente Jully-Mar",
                 feedback2: "El sistema de pedidos que desarrollaron ha optimizado nuestras operaciones y mejorado la experiencia de nuestros clientes."
@@ -51,7 +52,7 @@ const translations = {
         },
         services: {
             title: "Nuestros Servicios",
-            subtitle: "En Vadya te acompañamos de principio a fin en tu transformación digital.",
+            subtitle: "En Aurora Luminis te acompañamos de principio a fin en tu transformación digital.",
             backend: {
                 title: "Backend Escalable",
                 desc: "Diseñamos APIs robustas y seguras con Node.js, Express y bases de datos SQL para que tu sistema crezca contigo."
@@ -71,7 +72,7 @@ const translations = {
         },
         workflow: {
             title: "Cómo trabajamos",
-            subtitle: "En Vadya seguimos un proceso claro y eficiente para transformar tus ideas en software real.",
+            subtitle: "En Aurora Luminis seguimos un proceso claro y eficiente para transformar tus ideas en software real.",
             step1: {
                 title: "1. Idea & Análisis",
                 desc: "Escuchamos tu necesidad, analizamos tu negocio y definimos la mejor solución digital para tu pyme."
@@ -105,6 +106,45 @@ const translations = {
                 desc: "Otro proyecto de software a la medida, sin necesidad de imágenes, mostrando funcionalidades clave y beneficios."
             }
         },
+        productos: {
+            title: "Productos",
+            subtitle: "Soluciones en la Nube",
+            description: "Sistemas desarrollados con Supabase para garantizar seguridad, escalabilidad y sincronización en tiempo real.",
+            featured: "DESTACADO",
+            viewDemo: "Ver Demo",
+            comingSoon: "Próximamente",
+            deliverySystem: {
+                title: "Sistema de Domicilios",
+                desc: "Plataforma completa de domicilios con base de datos en Supabase. Pedidos en tiempo real, gestión de inventario y reportes automáticos."
+            },
+            ecommerce: {
+                title: "E-commerce Integral",
+                desc: "Tiendas online con autenticación Supabase, carrito persistente y gestión de productos en la nube con PostgreSQL."
+            },
+            inventory: {
+                title: "Gestión de Inventarios",
+                desc: "Control de stock con base de datos Supabase. Sincronización en tiempo real y reportes automáticos de inventario."
+            },
+            cloudInfrastructure: {
+                title: "Infraestructura Cloud",
+                description: "Todos nuestros sistemas utilizan Supabase para garantizar máxima seguridad, escalabilidad automática y sincronización en tiempo real de tus datos.",
+                supabaseFeatures: [
+                    "PostgreSQL Database",
+                    "Autenticación Segura",
+                    "Almacenamiento Cloud",
+                    "Tiempo Real",
+                    "API Automática",
+                    "Row Level Security"
+                ],
+                businessTypes: [
+                    "Restaurantes",
+                    "Retail",
+                    "Servicios",
+                    "Startups",
+                    "Pymes"
+                ]
+            }
+        },
         contact: {
             title: "Hablemos de tu proyecto",
             subtitle: "¿Listo para llevar tu pyme al siguiente nivel? Escríbenos y te responderemos lo antes posible.",
@@ -136,6 +176,7 @@ const translations = {
             services: "Services",
             workflow: "Workflow",
             demos: "Demos",
+            productos: "Products", // ← AGREGADO
             contact: "Contact",
             startProject: "Start Project",
         },
@@ -165,7 +206,7 @@ const translations = {
                 subtitle: "What our partners say about us",
                 client1: "German Gonzalez",
                 role1: "CEO Nubeware.ai",
-                feedback1: "Vadya transformed our website. Fast, professional and very attentive to our requirements.",
+                feedback1: "Aurora Luminis transformed our website. Fast, professional and very attentive to our requirements.",
                 client2: "Jully Mar",
                 role2: "Manager Jully-Mar",
                 feedback2: "The ordering system they developed has optimized our operations and improved our customer experience."
@@ -178,7 +219,7 @@ const translations = {
         },
         services: {
             title: "Our Services",
-            subtitle: "At Vadya, we guide you from start to finish in your digital transformation.",
+            subtitle: "At Aurora Luminis, we guide you from start to finish in your digital transformation.",
             backend: {
                 title: "Scalable Backend",
                 desc: "We design robust and secure APIs with Node.js, Express and SQL databases so your system grows with you."
@@ -198,7 +239,7 @@ const translations = {
         },
         workflow: {
             title: "How we work",
-            subtitle: "At Vadya, we follow a clear and efficient process to transform your ideas into real software.",
+            subtitle: "At Aurora Luminis, we follow a clear and efficient process to transform your ideas into real software.",
             step1: {
                 title: "1. Idea & Analysis",
                 desc: "We listen to your needs, analyze your business and define the best digital solution for your SME."
@@ -230,6 +271,45 @@ const translations = {
             example: {
                 title: "Example Client",
                 desc: "Another custom software project, showcasing key features and benefits."
+            }
+        },
+        productos: {
+            title: "Products",
+            subtitle: "Cloud Solutions",
+            description: "Systems developed with Supabase to ensure security, scalability and real-time synchronization.",
+            featured: "FEATURED",
+            viewDemo: "View Demo",
+            comingSoon: "Coming Soon",
+            deliverySystem: {
+                title: "Delivery System",
+                desc: "Complete delivery platform with Supabase database. Real-time orders, inventory management and automatic reports."
+            },
+            ecommerce: {
+                title: "E-commerce Platform",
+                desc: "Online stores with Supabase authentication, persistent cart and cloud product management with PostgreSQL."
+            },
+            inventory: {
+                title: "Inventory Management",
+                desc: "Stock control with Supabase database. Real-time synchronization and automatic inventory reports."
+            },
+            cloudInfrastructure: {
+                title: "Cloud Infrastructure",
+                description: "All our systems use Supabase to ensure maximum security, automatic scalability and real-time data synchronization.",
+                supabaseFeatures: [
+                    "PostgreSQL Database",
+                    "Secure Authentication",
+                    "Cloud Storage",
+                    "Real-time",
+                    "Auto API",
+                    "Row Level Security"
+                ],
+                businessTypes: [
+                    "Restaurants",
+                    "Retail",
+                    "Services",
+                    "Startups",
+                    "SMEs"
+                ]
             }
         },
         contact: {

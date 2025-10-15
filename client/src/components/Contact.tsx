@@ -26,19 +26,22 @@ const Contact: React.FC = () => {
         setError(null);
 
         try {
+            // Usando tu backend actual de ibug
             const res = await fetch("https://ibug-backend.onrender.com/send-email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
-            if (!res.ok) throw new Error("Error al enviar el mensaje");
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.error || "Error al enviar el mensaje");
 
             setSuccess(t.contact.success);
             setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
         } catch (err) {
             setError(t.contact.error);
-            console.error(err);
+            console.error("Error:", err);
         } finally {
             setLoading(false);
         }
@@ -216,11 +219,11 @@ const Contact: React.FC = () => {
                             </p>
 
                             <div className="space-y-4">
-                                <div className="flex items-center gap-4 p-4  rounded-xl border border-gray-700 hover:border-orange-400/30 transition-all duration-300">
+                                <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-700 hover:border-orange-400/30 transition-all duration-300">
                                     <Mail className="w-5 h-5 text-orange-400" />
                                     <div>
                                         <p className="text-white font-mono text-sm">Email</p>
-                                        <p className="text-gray-300">contacto@vadya.space</p>
+                                        <p className="text-gray-300">luminisaurora@gmail.com</p>
                                     </div>
                                 </div>
 

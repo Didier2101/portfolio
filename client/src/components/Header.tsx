@@ -6,7 +6,6 @@ import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { useLanguage } from "./contexts/LanguageContext";
 import Logo from "./Logo";
 
-
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,6 +26,7 @@ const Header: React.FC = () => {
     { path: "/servicios", label: t.nav.services },
     { path: "/workflow", label: t.nav.workflow },
     { path: "/demos", label: t.nav.demos },
+    { path: "/products", label: t.nav.productos }, // Dirección a productos
     { path: "/contacto", label: t.nav.contact },
   ];
 
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
         : "bg-transparent"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo con imagen */}
           <Link
@@ -56,11 +56,10 @@ const Header: React.FC = () => {
             onClick={closeMenu}
           >
             <div className="relative">
-              <div className="w-30 h-12 md:w-50 rounded-lg flex items-center justify-center group-hover:opacity-90 transition-all duration-300">
+              <div className="w-50 h-14 md:w-70 rounded-lg flex items-center justify-center group-hover:opacity-90 transition-all duration-300">
                 <Logo />
               </div>
             </div>
-
           </Link>
 
           {/* Desktop Navigation */}

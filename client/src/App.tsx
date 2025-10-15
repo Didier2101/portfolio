@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { LanguageProvider } from "./components/contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
+import Products from "./components/Products";
 
 const App: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const App: React.FC = () => {
             <Route path="/workflow" element={<Workflow />} />
             <Route path="/demos" element={<Demos />} />
             <Route path="/contacto" element={<Contact />} />
+            <Route path="/products" element={<Products />} />
           </Routes>
         </main>
 
