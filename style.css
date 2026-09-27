@@ -420,10 +420,10 @@ body {
 }
 
 .bento-card {
-    background: #ffffff;
+    background: #f8fafc;
     border: none;
-    border-radius: var(--radius-lg);
-    padding: 1.5rem 0;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
 }
 
 .bento-main h3 {
