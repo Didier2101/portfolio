@@ -1,0 +1,74 @@
+{
+  "personal": {
+    "name": "Didier Chávez González",
+    "role": "Desarrollador de Software Full Stack",
+    "phone": "+57 302 864 5014",
+    "email": "didierchavez2101@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/didier2101",
+    "github": "https://github.com/Didier2101",
+    "location": "Colombia"
+  },
+  "summary": "Full Stack Developer orientado a la excelencia técnica. Transformo requerimientos complejos en soluciones eficientes y escalables, integrando metodologías ágiles, Inteligencia Artificial y flujos optimizados.",
+  "education": [
+    {
+      "degree": "Tecnólogo en Análisis y Desarrollo de Software",
+      "institution": "SENA - Servicio Nacional de Aprendizaje",
+      "year": "2025"
+    },
+    {
+      "degree": "Diplomado en Programación en Desarrollo de Software",
+      "institution": "Universidad de Caldas",
+      "year": "2022"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Gestor de Aplicaciones",
+      "company": "Annar Health Technologies",
+      "period": "23 Sep 2026 - Actualidad",
+      "description": "Gestión, optimización y soporte técnico avanzado de aplicaciones del sector salud e infraestructura de software.",
+      "achievements": [
+        "Optimización de procesos internos y flujos operativos de la empresa.",
+        "Reducción del tiempo de respuesta en incidencias técnicas de nivel empresarial."
+      ]
+    },
+    {
+      "role": "Full Stack Developer",
+      "company": "Nubeware.ai",
+      "period": "Jul 2025 - Jun 2026",
+      "description": "Liderando el desarrollo de soluciones Full Stack e implementación de arquitecturas escalables.",
+      "achievements": [
+        "Integración de módulos de IA generativa mejorando la productividad del equipo en un 40%.",
+        "Desarrollo de microservicios robustos con Python (FastAPI) y Node.js para soluciones SaaS."
+      ]
+    },
+    {
+      "role": "Desarrollador Full Stack (Prácticas)",
+      "company": "NEC Colombia",
+      "period": "Feb 2025 - Jul 2025",
+      "description": "Prácticas profesionales enfocadas en soluciones corporativas y desarrollo software.",
+      "achievements": [
+        "Construcción de módulos frontend y backend orientados a plataformas empresariales.",
+        "Despliegue y pruebas integrales garantizando la estabilidad de aplicaciones clave."
+      ]
+    }
+  ],
+  "skills": {
+    "innovation": ["Vibe Coding & AI", "Full Stack Architecture"],
+    "frontend": ["Angular", "React / Next.js", "Tailwind CSS", "JavaScript ES6+", "TypeScript"],
+    "backend": ["Node.js / Express", "Python / FastAPI", "RESTful APIs", "Architecture & Microservices"],
+    "database_devops": ["MySQL", "PostgreSQL", "Docker", "Git & GitHub"]
+  },
+  "projects": [
+    {
+      "titulo": "SaaS Platform Analytics",
+      "descripcion": "Panel interactivo de métricas y análisis de datos en tiempo real.",
+      "tecnologias": ["Next.js", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "titulo": "API Gateway Microservices",
+      "descripcion": "Arquitectura de microservicios de alta disponibilidad y autenticación JWT.",
+      "tecnologias": ["FastAPI", "Docker", "PostgreSQL"]
+    }
+  ]
+}
