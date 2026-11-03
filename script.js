@@ -218,12 +218,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const actionsBar = document.getElementById('cv-overlay-actions');
     const printBtn = document.getElementById('print-generated-cv');
     const downloadJsonBtn = document.getElementById('download-json-cv');
+    const mainContent = document.getElementById('main-content');
+    let previousFocus = null;
+
+    const closeCvGenerator = () => {
+        if (!overlay) return;
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (mainContent) mainContent.inert = false;
+        if (previousFocus instanceof HTMLElement) previousFocus.focus();
+    };
 
     const startCvGenerator = async () => {
         if (!overlay || !typingArea) return;
         
-        // Show modal overlay
+        previousFocus = document.activeElement;
         overlay.classList.remove('hidden');
+        overlay.setAttribute('aria-hidden', 'false');
+        if (mainContent) mainContent.inert = true;
+        closeBtn?.focus();
         typingArea.innerHTML = '';
         actionsBar.classList.add('hidden');
         statusTitle.textContent = 'Generando Hoja de Vida en tiempo real...';
@@ -260,6 +273,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `HOJA DE VIDA GENERADA EXITOSAMENTE.\n`,
                 `==================================================`
             ];
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                typingArea.textContent = textLines.join('');
+                statusTitle.textContent = 'Hoja de vida lista para descarga o impresión';
+                actionsBar.classList.remove('hidden');
+                return;
+            }
 
             let lineIndex = 0;
             let charIndex = 0;
@@ -298,8 +318,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (overlay) overlay.classList.add('hidden');
+        closeBtn.addEventListener('click', closeCvGenerator);
+    }
+
+    if (overlay) {
+        overlay.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeCvGenerator();
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const focusableElements = [...overlay.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+                .filter(element => !element.closest('.hidden') && element.getClientRects().length > 0);
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (!firstElement) {
+                event.preventDefault();
+                overlay.focus();
+            } else if (event.shiftKey && document.activeElement === firstElement) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (!event.shiftKey && document.activeElement === lastElement) {
+                event.preventDefault();
+                firstElement.focus();
+            }
         });
     }
 
@@ -326,4 +372,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.lucide) {
         window.lucide.createIcons();
     }
+    document.body.classList.add('js-enabled');
 });
